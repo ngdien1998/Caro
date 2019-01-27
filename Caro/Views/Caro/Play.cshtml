@@ -1,0 +1,50 @@
+﻿@{ViewData["Title"] = "Play";}
+
+<div id="container">
+    <div id="board">
+        <canvas id="drawing" width="605" height="605"></canvas>
+        <div id="status"></div>
+    </div>
+    <div id="info">
+        <div id="direction">
+            <div id="register">
+                <input class="textbox" type="text" id="txt-username" placeholder="Enter your username" />
+                <input class="button" type="button" value="Register" id="btn-register" />
+                <div id="messages">
+                    <div class="title">Room chat</div>
+                    <ul class="message-content" id="room-message">
+                        <li class="message my"><span>Hello</span></li>
+                        <li class="message their"><span>Hello</span></li>
+                        <li class="message my"><span>Hello</span></li>
+                        <li class="message their"><span>Hello</span></li>
+                        <li class="message their"><span>Hello</span></li>
+                    </ul>
+                </div>
+                <input class="textbox" type="text" placeholder="Enter message, press enter to send!" id="txt-message" />
+                <input class="button" type="button" id="btn-send" value="Send" />
+            </div>
+        </div>
+        <div id="chat">
+            <div id="global-chat">
+                <div class="title">Global chat</div>
+            </div>
+            <input class="textbox" type="text" placeholder="Send message to global" id="txt-message-to-all" />
+            <input class="button" type="button" id="btn-send-to-all" value="Send to all" />
+            <div id="show-members">
+                <div class="title">Online members</div>
+                <ul id="players"></ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+@section Styles {
+    <link type="text/css" rel="stylesheet" href="~/css/main.css" />
+}
+
+@section Scripts {
+    <script type="text/javascript" src="~/lib/signalr/signalr.min.js"></script>
+    <script type="text/javascript" src="~/js/main.js"></script>
+}

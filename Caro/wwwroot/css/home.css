@@ -1,0 +1,4 @@
+﻿#register{width:400px;float:left}
+#status{width:calc(100%-400px);float:right}
+#online{width:300px;float:left}
+#playing{width:calc(100%-300px);float:right}

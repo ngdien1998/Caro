@@ -1,0 +1,40 @@
+﻿*{font-family:Arial;}
+#container{width:1200px;margin:auto;}
+#board{width:610px;float:left;}
+#info{width:calc(100% - 610px);float:right;}
+.clearfix{clear:both;}
+#direction{width:300px;float:left;}
+#chat{width:calc(100% - 300px);float:right;}
+#global-chat{height:300px;overflow-y:scroll;border:2px solid #BDBDBD;margin-bottom:4px;}
+#show-members{height:259px;overflow-y:scroll;border:2px solid #BDBDBD;margin-top:4px;}
+.textbox{padding:4px;border:2px solid #BDBDBD;outline:none;}
+#txt-username{width:207px;}
+#txt-message{width:226px;}
+#messages{border:2px solid #BDBDBD;min-height:536px;width:289px;margin:4px 0;position:relative;}
+.button{color:#FFF;background:#BDBDBD;padding:4px 8px;border:2px solid #BDBDBD;outline:none;cursor:pointer;transition:all 0.3s;}
+.button:hover{background:#BDBDBD;}
+.button:active{background:#dcdcdc;}
+#txt-message-to-all{width:190px;}
+#status{text-align:center;font-size:24px;font-weight:bold;}
+ul{padding:0;margin:8px;}
+li{list-style-type:none;}
+#players li{display:inline-block;padding:4px 8px;font-size:13px;background-color:#BDBDBD;margin:0 4px 4px 0;border-radius:10px;}
+#validate-for-username{display:block;}
+.title{background-color:#BDBDBD;color:#FFF;font-size:13px;text-align:center;padding:4px;border-bottom:2px solid #BDBDBD;}
+.message-content{position:absolute;bottom:0;padding:8px;width:257px;}
+.my{text-align:right;}
+.message{margin-bottom:9px;font-size:13px;}
+.message span{padding:4px 8px;background-color:#BDBDBD;border-radius:8px;}
+
+
+
+
+
+
+
+
+
+::-webkit-scrollbar{width: 10px;}
+::-webkit-scrollbar-track{background:#BDBDBD;}
+::-webkit-scrollbar-thumb{background:#888;}
+::-webkit-scrollbar-thumb:hover{background:#555;}
