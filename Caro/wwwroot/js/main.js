@@ -217,6 +217,10 @@ function canvasClick(event) {
 
     let mpos = mapBoardPositionToMatrixPosition(bpos);
 
+    if (boardMap[mpos.i][mpos.j] !== -1) {
+        return;
+    }
+
     boardMap[mpos.i][mpos.j] = X;
     connection.invoke("PlayerCompletesTurn", boardMap);
     if (checkGame(mpos.i, mpos.j, boardMap)) {
@@ -285,12 +289,13 @@ connection.on("YouWon", () => {
 });
 
 connection.on("StartGameNow", first => {
-    if (first === true) {
-        alert("Opponent ready! You fisrt. Press OK to play!");
+    if (first) {
+        alert("Opponent ready! You're fisrt. Press OK to play!");
         unlockBoard();
     } else {
-        alert("Opponent ready! Opponent fisrt. Press OK to play!");
+        alert("Opponent ready! Opponent's fisrt. Press OK to play!");
     }
+    document.getElementById("btn-send").removeAttribute("disabled");
 });
 
 connection.on("WaitForFindingOpponent", () => {
