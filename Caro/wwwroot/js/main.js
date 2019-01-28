@@ -217,7 +217,7 @@ function canvasClick(event) {
 
     let mpos = mapBoardPositionToMatrixPosition(bpos);
 
-    if (boardMap[mpos.i][mpos.j] !== -1) {
+    if (boardMap[mpos.i][mpos.j] !== 1) {
         return;
     }
 
@@ -291,9 +291,15 @@ connection.on("YouWon", () => {
 connection.on("StartGameNow", first => {
     if (first) {
         alert("Opponent ready! You're fisrt. Press OK to play!");
+        let statusHtml = document.getElementById("status");
+        statusHtml.innerHTML = "Your turn";
+        statusHtml.style.color = "green";
         unlockBoard();
     } else {
         alert("Opponent ready! Opponent's fisrt. Press OK to play!");
+        let statusHtml = document.getElementById("status");
+        statusHtml.innerHTML = "Opponent turn";
+        statusHtml.style.color = "red";
     }
     document.getElementById("btn-send").removeAttribute("disabled");
 });
@@ -316,8 +322,7 @@ connection.on("UpdatePlayer", players => {
 
 connection.on("ServerSendMessageToOtherInGroup", (username, message) => {
     let messageHtml = document.createElement("li");
-    messageHtml.setAttribute("class", "message");
-    messageHtml.setAttribute("id", "their");
+    messageHtml.setAttribute("class", "message their");
 
     let messageContent = document.createElement("span");
     messageContent.innerHTML = [username, " says <b>", message, "</b>"].join("");
@@ -336,7 +341,7 @@ connection.on("OpponentGiveUp", () => {
 
 connection.start().catch(e => console.error(e));
 
-document.getElementById("btn-register").addEventListener("click", event => {
+document.getElementById("btn-register").addEventListener("click", () => {
     let username = document.getElementById("txt-username").value;
     if (username === "") {
         alert("Username is not valid");
@@ -362,7 +367,7 @@ document.getElementById("btn-send").addEventListener("click", () => {
     messageHtml.setAttribute("class", "message my");
 
     let messageContent = document.createElement("span");
-    messageContent.innerHTML = "You says <b>" + message + "</b>";
+    messageContent.innerHTML = ["You says <b>", message, "</b>"].join("");
 
     messageHtml.appendChild(messageContent);
 

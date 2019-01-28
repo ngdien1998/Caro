@@ -82,7 +82,7 @@ namespace Caro.Hubs
 
         public override Task OnConnectedAsync()
         {
-            Clients.All.SendAsync("CreateBoard", EmptyBoard);
+            Clients.Client(Context.ConnectionId).SendAsync("CreateBoard", EmptyBoard);
             Clients.All.SendAsync("UpdatePlayer", players.Select(p => p.Name).ToArray());
             return base.OnConnectedAsync();
         }
@@ -98,11 +98,11 @@ namespace Caro.Hubs
                 Room room = rooms.Find(r => r.RoomName == player.RoomName);
                 if (room != null)
                 {
-                    if (room.MainPlayer.Name == player.Name)
+                    if (room.MainPlayer?.Name == player.Name)
                     {
                         room.MainPlayer = null;
                     }
-                    else if (room.Opponent.Name == player.Name)
+                    else if (room.Opponent?.Name == player.Name)
                     {
                         room.Opponent = null;
                     }
@@ -223,7 +223,7 @@ namespace Caro.Hubs
             Player player = players.Find(p => p.ConnectionId == Context.ConnectionId);
             if (player != null)
             {
-                await Clients.Client(player.RoomName).SendAsync("ServerSendMessageToOtherInGroup", player.Name, message);
+                await Clients.OthersInGroup(player.RoomName).SendAsync("ServerSendMessageToOtherInGroup", player.Name, message);
             }
         }
 
